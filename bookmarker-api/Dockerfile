@@ -1,4 +1,4 @@
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:25.0.1_8-jre
 
 ADD target/*.jar app.jar
 RUN sh -c 'touch /app.jar'
