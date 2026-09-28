@@ -64,16 +64,16 @@ tasks:
     desc: Deploy applications to Kubernetes
     cmds:
       - echo "Deploying applications to Kubernetes..."
-      - kubectl apply -f k8s/1-config.yaml || true
-      - kubectl apply -f k8s/2-postgresdb.yaml || true
+      - kubectl apply -f k8s/1-config.yaml
+      - kubectl apply -f k8s/2-postgresdb.yaml
       - echo "Waiting for PostgreSQL to be ready..."
       - sleep 20
-      - kubectl apply -f k8s/3-bookmarker-api.yaml || true
-      - kubectl apply -f k8s/4-bookmarker-ui.yaml || true
-      - kubectl apply -f k8s/5-ingress-api.yaml || true
-      - kubectl apply -f k8s/6-ingress-ui.yaml || true
+      - kubectl apply -f k8s/3-bookmarker-api.yaml
+      - kubectl apply -f k8s/4-bookmarker-ui.yaml
+      - kubectl apply -f k8s/5-ingress-api.yaml
+      - kubectl apply -f k8s/6-ingress-ui.yaml
       - echo "Applications deployed to Kubernetes successfully!"
-      - 'echo "- API using NodePort: http://localhost:18080/api/bookmarks"'
+      - 'echo "- API using NodePort: http://localhost:30090/api/bookmarks"'
       - 'echo "- UI using NodePort: http://localhost:30080/"'
       - 'echo "- API using Ingress: http://localhost/bookmarker-api/api/bookmarks"'
       - 'echo "- UI using Ingress: http://localhost/"'
@@ -104,7 +104,7 @@ tasks:
   k8s-logs:
     desc: Show logs for Kubernetes pods
     cmds:
-      - kubectl logs -l app=bookmarker-api -f
+      - kubectl logs -l app=bookmarker-api-pod -f
       
   k8s-scale:
     desc: Scale the bookmarker-api deployment to specified replicas
