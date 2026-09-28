@@ -6,8 +6,8 @@ tasks:
     cmds:
       - task docker-up
       - echo "Application started successfully!"
-      - echo "- API available at: http://localhost:18080/api/bookmarks"
-      - echo "- UI available at: http://localhost:13000"
+      - 'echo "API available at: http://localhost:18080/api/bookmarks"'
+      - 'echo "UI available at: http://localhost:13000"'
       
   infra-up:
     desc: Start only infrastructure services (PostgreSQL) without application
@@ -32,8 +32,8 @@ tasks:
       - task build-api
       - docker compose -f docker-compose.yml -f docker-compose-app.yml up -d
       - echo "Application started with Docker Compose"
-      - echo "- API available at: http://localhost:18080/api/bookmarks"
-      - echo "- UI available at: http://localhost:13000"
+      - 'echo "- API available at: http://localhost:18080/api/bookmarks"'
+      - 'echo "- UI available at: http://localhost:13000"'
       
   docker-down:
     desc: Stop and remove Docker Compose services
@@ -73,10 +73,10 @@ tasks:
       - kubectl apply -f k8s/5-ingress-api.yaml || true
       - kubectl apply -f k8s/6-ingress-ui.yaml || true
       - echo "Applications deployed to Kubernetes successfully!"
-      - echo "- API using NodePort: http://localhost:18080/api/bookmarks"
-      - echo "- UI using NodePort: http://localhost:30080/"
-      - echo "- API using Ingress: http://localhost/bookmarker-api/api/bookmarks"
-      - echo "- UI using Ingress: http://localhost/"
+      - 'echo "- API using NodePort: http://localhost:18080/api/bookmarks"'
+      - 'echo "- UI using NodePort: http://localhost:30080/"'
+      - 'echo "- API using Ingress: http://localhost/bookmarker-api/api/bookmarks"'
+      - 'echo "- UI using Ingress: http://localhost/"'
       
   k8s-up:
     desc: Start the full Kubernetes environment (build, create, deploy)
